@@ -1,0 +1,53 @@
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  name: resource-watcher-application
+  namespace: resource-watcher-coordinator
+  labels:
+    build: resource-watcher-application
+spec:
+  lookupPolicy:
+    local: false
+---
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: resource-watcher-application
+  namespace: resource-watcher-coordinator
+  labels:
+    build: resource-watcher-application
+  annotations:
+    openshift.io/generated-by: OpenShiftNewBuild
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: resource-watcher-application:latest
+  resources: {}
+  successfulBuildsHistoryLimit: 5
+  failedBuildsHistoryLimit: 5
+  strategy:
+    type: Docker
+    dockerStrategy:
+      from:
+        kind: ImageStreamTag
+        name: 'python:3.7-prod'
+  postCommit: {}
+  source:
+    type: Git
+    git:
+      uri: https://github.com/Jabbs19/ResourceWatcherApplication.git
+  triggers:
+    - type: GitHub
+      github:
+        secret: hhmxrcUXi0t45l_vDsXr
+    - type: Generic
+      generic:
+        secret: abagi39Hs8KTiu4ocK5u
+    - type: ConfigChange
+    - type: ImageChange
+      imageChange:
+        lastTriggeredImageID: >-
+          bitnami/python@sha256:941024d8e989cd5f38f257e0ff6991c66ee5caac3a87b3fd087cfcf02f0185e3
+  runPolicy: Serial
