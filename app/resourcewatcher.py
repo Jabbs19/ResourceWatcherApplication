@@ -7,6 +7,14 @@ from kubernetes.client import models
 from kubernetes import client, config
 import copy
 
+# some_file.py
+import sys
+# insert at 1, 0 is the script path (or '' in REPL)
+sys.path.insert(1, '/customcode')
+
+import custom
+
+
 #k8s stuff
 from .simpleclient import *
 
