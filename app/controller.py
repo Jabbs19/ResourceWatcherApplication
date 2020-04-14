@@ -10,6 +10,7 @@ from .resourcewatcher import *
 
 
 logger = logging.getLogger('controller')
+logging.basicConfig(level=logging.INFO)
 
 
 class Controller(threading.Thread):
@@ -38,6 +39,7 @@ class Controller(threading.Thread):
         #New Event Object
         eo = eventObject(event)
 
+
         #Queue event object
         self._queue_work(eo)
 
@@ -61,7 +63,9 @@ class Controller(threading.Thread):
                 break
             try:
                 print("Reconcile state")
+                
                 self._process_event(eo)
+
                 #self._printQueue(eo)
                 self.workqueue.task_done()
             except Exception as e:
@@ -89,6 +93,7 @@ class Controller(threading.Thread):
         """Make changes to go from current state to desired state and updates
            object status."""
         #Can remove this logging later, not using event key anymore.
+
         logger.info("Event Pulled from Queue: {:s}".format(eventObject.eventKey))
 
         if should_event_be_processed(eventObject, self.rwObject):
@@ -96,7 +101,7 @@ class Controller(threading.Thread):
                 "Event Processing."))    
 
             if eventObject.eventType in ['ADDED']:
-                
+
                 process_added_event(eventObject, self.rwObject)
             
             elif eventObject.eventType in ['MODIFIED']:

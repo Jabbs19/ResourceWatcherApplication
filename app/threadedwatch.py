@@ -4,7 +4,7 @@ import threading
 from kubernetes import watch
 
 logger = logging.getLogger('threadedwatch')
-
+logging.basicConfig(level=logging.INFO)
 
 class ThreadedWatcher(threading.Thread):
     """Watches Kubernetes resources event in a separate thread. Handlers for

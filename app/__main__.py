@@ -14,9 +14,6 @@ from .simpleclient import *
 #for testing
 
 
-logger = logging.getLogger('main')
-
-
 PARSER = argparse.ArgumentParser()
 PARSER.add_argument("--tester")
 
