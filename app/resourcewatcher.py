@@ -115,17 +115,17 @@ class eventObject():
         annotationValue = annotationsDict.get(rwObject.annotationFilterKey, "")
 
         if annotationValue == None:
-            self.annotationValue = None
+            self.annotationFilterValue = None
             return False
         else:        
-            self.annotationValue = annotationValue
+            self.annotationFilterValue = annotationValue
             return True
 
 def should_event_be_processed(eventObject, rwObject):
 
     eventObject.retrieve_and_set_annotation_value(rwObject)    
 
-    if eventObject.annotationValue == None:
+    if eventObject.annotationFilterValue == None:
         return False
     else:
        return True

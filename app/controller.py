@@ -93,7 +93,7 @@ class Controller(threading.Thread):
 
         if should_event_be_processed(eventObject, self.rwObject):
             logger.info("[ObjectType: %s] [ObjectName: %s] [Namespace: %s] [EventType: %s] [Message: %s]" % (eventObject.eventObjectType, eventObject.objectName, eventObject.objectNamespace, eventObject.eventType, 
-                "Event found."))    
+                "Event Processing."))    
 
             if eventObject.eventType in ['ADDED']:
                 
