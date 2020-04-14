@@ -10,10 +10,11 @@ import copy
 # some_file.py
 import sys
 # insert at 1, 0 is the script path (or '' in REPL)
-sys.path.insert(1, '/customcode')
+sys.path.insert(0, '/customcode')
 
-from /customcode/custompython import *
+from .custompython import *
 #import custompython
+
 
 
 #k8s stuff
