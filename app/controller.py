@@ -101,7 +101,7 @@ class Controller(threading.Thread):
             
             elif eventObject.eventType in ['MODIFIED']:
                 
-                process_added_event(eventObject, self.rwObject)
+                process_modified_event(eventObject, self.rwObject)
 
             elif eventObject.eventType in ['DELETED']:
 

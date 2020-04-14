@@ -96,7 +96,7 @@ class eventObject():
         self.eventKey = self.eventType + "~~" + self.eventObjectType + "~~" + self.objectName + "~~" + self.objectNamespace
 
         #Other
-        self.annotationValue = None
+        self.annotationFilterValue = None
         
     def retrieve_and_set_annotation_value(self, rwObject):
         
@@ -133,44 +133,38 @@ def should_event_be_processed(eventObject, rwObject):
 def process_added_event(eventObject, rwObject):
 
     if rwObject.eventAction == "POST":
-        print("ADDED Event Processed")
-        print("")
-        print("Annotation Value for this Event: " + str(eventObject.annotationValue))
-        print("")
-        # print("Full Object: ")
-        #print(str(eventObject.fullEventObject['object']))
-    elif rwObject.eventAction == "CUSTOM":
-        print("ADDED Event Processed")
+        logger.info("[Message: %s]" % ("ADDED Event Processed"))
+        logger.info("[Message: %s]" % ("Annotation Value for this Event: " + str(eventObject.annotationFilterValue)))
+        logger.info("[Message: %s]" % (rwObject.eventAction))
 
-        print("Call Custom Code")
+    elif rwObject.eventAction == "CUSTOM":
+        logger.info("[Message: %s]" % ("ADDED Event Processed"))
+        logger.info("[Message: %s]" % ("Annotation Value for this Event: " + str(eventObject.annotationFilterValue)))
+        logger.info("[Message: %s]" % (rwObject.eventAction))
+        #Call Custom Code
 
 def process_modified_event(eventObject, rwObject):
     if rwObject.eventAction == "POST":
-        print("MODIFIED Event Processed")
-        print("") 
-        print("Annotation Value for this Event: " + str(eventObject.annotationValue))
-        print("")
-        # print("Full Object: ")
-        # print(str(eventObject.fullEventObject))
+        logger.info("[Message: %s]" % ("MODIFIED Event Processed"))
+        logger.info("[Message: %s]" % ("Annotation Value for this Event: " + str(eventObject.annotationFilterValue)))
+        logger.info("[Message: %s]" % (rwObject.eventAction))
+
     elif rwObject.eventAction == "CUSTOM":
-        print("MODIFIED Event Processed")
-
-        print("Call Custom Code")        
-
-    #Check if the annotation itself is what was modified, may need to look at the last-configuration value.  All svc. need --record.
+        logger.info("[Message: %s]" % ("MODIFIED Event Processed"))
+        logger.info("[Message: %s]" % ("Annotation Value for this Event: " + str(eventObject.annotationFilterValue)))
+        logger.info("[Message: %s]" % (rwObject.eventAction))
+        #Call Custom Code
 
 def process_deleted_event(eventObject, rwObject):
     if rwObject.eventAction == "POST":
-        print("DELETED Event Processed")
-        print("")
-        print("Annotation Value for this Event: " + str(eventObject.annotationValue))
-        print("")
-        # print("Full Object: ")
-        #print(str(eventObject.fullEventObject['object']))
+        logger.info("[Message: %s]" % ("DELETED Event Processed"))
+        logger.info("[Message: %s]" % ("Annotation Value for this Event: " + str(eventObject.annotationFilterValue)))
+        logger.info("[Message: %s]" % (rwObject.eventAction))
     elif rwObject.eventAction == "CUSTOM":
-        print("DELETED Event Processed")
-
-        print("Call Custom Code")
+        logger.info("[Message: %s]" % ("DELETED Event Processed"))
+        logger.info("[Message: %s]" % ("Annotation Value for this Event: " + str(eventObject.annotationFilterValue)))
+        logger.info("[Message: %s]" % (rwObject.eventAction))
+        #Call Custom Code
 
 
 
