@@ -85,14 +85,14 @@ class resourceWatcher():
 class eventObject():
     def __init__(self, event):
         self.fullEventObject = event
-        self.eventType = self.fullEventObject['type']
+        self.eventType = self.fullEventObject['type']                                           #ADDED, MODIFIED, etc.
         try:
-             self.eventObjectType = self.fullEventObject['object'].kind
+             self.eventObjectType = self.fullEventObject['object'].kind                         #ServiceAccount, Deployment, Pod
         except:
              self.eventObjectType = self.fullEventObject['object']['kind']
 
         try:
-            self.objectName = self.fullEventObject['object'].metadata.name
+            self.objectName = self.fullEventObject['object'].metadata.name                      #Deployment Name, Pod Name, etc.
         except:
             self.objectName = self.fullEventObject['object']['metadata']['name']
 
