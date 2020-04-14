@@ -149,6 +149,8 @@ def process_added_event(eventObject, rwObject):
         logger.info("[Message: %s]" % ("ADDED Event Processed"))
         logger.info("[Message: %s]" % ("Annotation Value for this Event: " + str(eventObject.annotationFilterValue)))
         logger.info("[Message: %s]" % (rwObject.eventAction))
+        test_custom_code()
+        
         #Call Custom Code
 
 def process_modified_event(eventObject, rwObject):
@@ -161,6 +163,8 @@ def process_modified_event(eventObject, rwObject):
         logger.info("[Message: %s]" % ("MODIFIED Event Processed"))
         logger.info("[Message: %s]" % ("Annotation Value for this Event: " + str(eventObject.annotationFilterValue)))
         logger.info("[Message: %s]" % (rwObject.eventAction))
+        test_custom_code()
+
         #Call Custom Code
 
 def process_deleted_event(eventObject, rwObject):
@@ -172,6 +176,8 @@ def process_deleted_event(eventObject, rwObject):
         logger.info("[Message: %s]" % ("DELETED Event Processed"))
         logger.info("[Message: %s]" % ("Annotation Value for this Event: " + str(eventObject.annotationFilterValue)))
         logger.info("[Message: %s]" % (rwObject.eventAction))
+        test_custom_code()
+
         #Call Custom Code
 
 
