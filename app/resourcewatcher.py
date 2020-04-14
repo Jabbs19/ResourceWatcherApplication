@@ -12,7 +12,7 @@ import sys
 # insert at 1, 0 is the script path (or '' in REPL)
 sys.path.insert(1, '/customcode')
 
-from .custompython import *
+from /customcode/custompython import *
 #import custompython
 
 
