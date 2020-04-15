@@ -7,18 +7,11 @@ from kubernetes.client import models
 from kubernetes import client, config
 import copy
 
-# some_file.py
-import sys
-# insert at 1, 0 is the script path (or '' in REPL)
-sys.path.insert(0, '/customcode')
-
-#from .custompython import *
-#import custompython
-import custompython
-
-
 #k8s stuff
 from .simpleclient import *
+
+#For calling custom code.
+from .integration import *
 
 
 logger = logging.getLogger('resourcewatcher')
@@ -84,6 +77,7 @@ class resourceWatcher():
         
 class eventObject():
     def __init__(self, event):
+        #Don't need to carry this whole object through, could just parse what's needed to make it slimmer.
         self.fullEventObject = event
         self.eventType = self.fullEventObject['type']                                           #ADDED, MODIFIED, etc.
         try:
@@ -152,7 +146,7 @@ def process_added_event(eventObject, rwObject):
         logger.info("[Message: %s]" % ("ADDED Event Processed"))
         logger.info("[Message: %s]" % ("Annotation Value for this Event: " + str(eventObject.annotationFilterValue)))
         logger.info("[Message: %s]" % (rwObject.eventAction))
-        custompython.test_custom_code('hello')
+        integration_test_custom_code('Added Custom Code'')
         
         #Call Custom Code
 
@@ -166,7 +160,7 @@ def process_modified_event(eventObject, rwObject):
         logger.info("[Message: %s]" % ("MODIFIED Event Processed"))
         logger.info("[Message: %s]" % ("Annotation Value for this Event: " + str(eventObject.annotationFilterValue)))
         logger.info("[Message: %s]" % (rwObject.eventAction))
-        custompython.test_custom_code()
+        integration_test_custom_code('Modified Custom Code')
 
         #Call Custom Code
 
@@ -179,7 +173,7 @@ def process_deleted_event(eventObject, rwObject):
         logger.info("[Message: %s]" % ("DELETED Event Processed"))
         logger.info("[Message: %s]" % ("Annotation Value for this Event: " + str(eventObject.annotationFilterValue)))
         logger.info("[Message: %s]" % (rwObject.eventAction))
-        custompython.test_custom_code()
+        integration_test_custom_code('Deleted Custom Code')
 
         #Call Custom Code
 
