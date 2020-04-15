@@ -12,7 +12,4 @@ logger = logging.getLogger('integration')
 logging.basicConfig(level=logging.INFO)
 
 def integration_test_custom_code(inputString="test"):
-    try:
-        test_cutom_code(inputString)
-    except:
-        print("ERROR")
+    test_cutom_code(inputString)
