@@ -2,7 +2,6 @@ FROM bitnami/python:3.7-prod
 USER 0
 
 # Define Env Variables
-ENV TEST="working1"
 
 # setup resource directories
 RUN mkdir -p /app /config
@@ -32,6 +31,7 @@ WORKDIR /
 # setup the google credentials part
 #ARG google_application_credentials=/config/credentials.json
 #ENV GOOGLE_APPLICATION_CREDENTIALS=$google_application_credentials
+ENV TEST="9 AM"
 
 USER 1234
 

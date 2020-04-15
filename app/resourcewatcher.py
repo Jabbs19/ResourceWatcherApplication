@@ -146,7 +146,7 @@ def process_added_event(eventObject, rwObject):
         logger.info("[Message: %s]" % ("ADDED Event Processed"))
         logger.info("[Message: %s]" % ("Annotation Value for this Event: " + str(eventObject.annotationFilterValue)))
         logger.info("[Message: %s]" % (rwObject.eventAction))
-        integration_test_custom_code('Added Custom Code'')
+        integration_test_custom_code('Added Custom Code')
         
         #Call Custom Code
 
