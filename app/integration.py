@@ -12,4 +12,4 @@ logger = logging.getLogger('integration')
 logging.basicConfig(level=logging.INFO)
 
 def integration_test_custom_code(inputString="test"):
-    test_cutom_code(inputString)
+    test_custom_code(inputString)
